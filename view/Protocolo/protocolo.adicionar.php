@@ -7,6 +7,7 @@
 		});
 		
 		$('#Salvar').click(function(e) {
+
 			e.preventDefault();
 			
 			//1 instansciar e recuperar valores dos inputs
