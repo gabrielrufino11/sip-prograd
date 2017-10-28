@@ -10,8 +10,6 @@
 
 			e.preventDefault();
 			
-			//1 instansciar e recuperar valores dos inputs
-			
 			var id_Protocolo = $('#id_Protocolo').val();
 			var remetente_Protocolo = $('#remetente_Protocolo').val();
 			var id_TipoDocumento = $('#id_TipoDocumento').children(":selected").val();
