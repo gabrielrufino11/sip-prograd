@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*
+nav{
+  	background-image: url("../images/sistema_progradFaixa.png");
+  	background-repeat:no-repeat;
+	min-height:200px !important;
+}
+*/
+
+#loader{
+	margin-top:3.5em;
+	min-height:95vh;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+	padding: 0.2em !important; 
+}
+
+.checklist-item{
+	background-color:#eee !important;
+}
+
+textarea { resize:vertical; }
+
+
+.col-left {
+    display:inline-block;
+    float:left;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+.col-fixed {
+    /* custom width */
+    width:25em;
+	height:330px;
+}
+
+.myTab{
+	padding-left:1em;
+}
+
+.chosen-select{
+	width:20em !important;
+}
+
+.disponivel{
+	background-color:#dff0d8;
+}
+
+.protocolofooter{
+	padding:1.5em;
+	background: #f8f8f8;
+  	color: #777;
+}
+
+
