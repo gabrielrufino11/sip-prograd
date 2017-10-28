@@ -4,8 +4,18 @@
 			e.preventDefault();
 			$('#loader').load('view/Protocolo/protocolo.lista.php');	
 		});
+
+		$('#lista_protocolo_link_1').click(function(e) {
+			e.preventDefault();
+			$('#loader').load('view/Protocolo/protocolo.lista.php');	
+		});
 		
 		$('#adicionar_protocolo_link').click(function(e) {
+			e.preventDefault();
+			$('#loader').load('view/Protocolo/protocolo.adicionar.php');	
+		});
+
+		$('#adicionar_protocolo_link_1').click(function(e) {
 			e.preventDefault();
 			$('#loader').load('view/Protocolo/protocolo.adicionar.php');	
 		});
@@ -46,6 +56,11 @@
 		});
 		
 		$('#lista_reuniao_link').click(function(e) {
+			e.preventDefault();
+			$('#loader').load('view/Reuniao/reuniao.lista.php');	
+		});
+
+		$('#lista_reuniao_link_1').click(function(e) {
 			e.preventDefault();
 			$('#loader').load('view/Reuniao/reuniao.lista.php');	
 		});

@@ -56,14 +56,32 @@
     </nav>
     
     <main class="container-fluid" id="loader">
-     <br><br><br>
-    <img src="images/Image001.png" width="400" height="194" class="center-block">
-        <br><br><br><br><br><br>
-		<div class="btn-group btn-group-justified">
-    		<a href="" id="adicionar_protocolo_link" class="btn btn-primary btn-lg">Cadastrar Novo Protocolo</a>
-        	<a href="" class="btn btn-primary btn-lg" id="lista_protocolo_link">Meus Protocolos</a>
-  			<a href="" class="btn btn-primary btn-lg" id="lista_reuniao_link">Minhas Reuniões</a>
-    	</div>
+
+      <br><br><br><br><br><br><br>
+    
+    <div class="container">
+    	<div style="height: 0px;" class="row hidden-xs top-spacer">
+        </div>
+        <div class="row hidden-sm hidden-xs">
+        <div class="col-lg-7 col-md-8">
+        <img src="images/Image001.png" width="400" height="194" class="center-block">
+        <br><br>
+        <h3 data-i18n="new_home.slogan" align="center" style="font-family:Georgia, 'Times New Roman', Times, serif">Sistema de Protocolos da Pró-Reitoria de Graduação da UFVJM.</h3>
+        </div>
+        <div class="col-lg-3 col-lg-offset-2 col-md-4">
+        <div class="well text-center"><h6 id="classroom-edition-header" data-i18n="new_home.classroom_edition"></h6>
+        <div><a id="adicionar_protocolo_link_1"><button data-event-action="Homepage Click Teacher Button CTA" data-i18n="new_home.im_a_teacher" class="teacher-btn btn btn-primary btn-lg btn-block" style="background-color:#C30">Novo Protocolo</button></a></div>
+        <br><br>
+        <div><a id="lista_protocolo_link_1"><button data-event-action="Homepage Click Student Button CTA" data-i18n="new_home.im_a_student" class="student-btn btn btn-forest btn-lg btn-block" style="background-color:#CC6">Meus Protocolos</button></a></div>
+        <br><br>
+        <div><a id="lista_reuniao_link_1"><button data-event-action="Homepage Click Student Button CTA" data-i18n="new_home.im_a_student" class="student-btn btn btn-forest btn-lg btn-block" style="background-color:#6C3">Minhas Reuniões</button></a></div>
+        </div>
+        </div>
+        </div>
+    </div>
+
+
+
     </main>
    	
     <footer class="protocolofooter">
