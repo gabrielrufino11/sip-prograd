@@ -4,21 +4,20 @@
 
 	//parte1
 	
-	$id_Protocolo = $_POST['id_Protocolo'];
-	$remetente_Protocolo = $_POST['remetente_Protocolo'];
-	$id_TipoDocumento = $_POST['id_TipoDocumento'];
+	$id_Reuniao = $_POST['id_Reuniao'];
 	$id_Usuario = $_POST['id_Usuario'];
-	$descricaoTeor_Protocolo = $_POST['descricaoTeor_Protocolo'];
-    $dtEnvio_Protocolo = $_POST['dtEnvio_Protocolo'];
-    $dtRecebimento_Protocolo = $_POST['dtRecebimento_Protocolo'];
+	$dt_Reuniao = $_POST['dt_Reuniao'];
+	$hora_Reuniao = $_POST['hora_Reuniao'];
+	$local_Reuniao = $_POST['local_Reuniao'];
+    $pauta_Reuniao = $_POST['pauta_Reuniao'];
 	
 	
 	//parte2
 	$action = $_POST['action'];
 	
 	//parte3
-	$Item = new Protocolo();
-	$Item->SetValues($id_Protocolo, $remetente_Protocolo, $id_TipoDocumento, $id_Usuario, $descricaoTeor_Protocolo, $dtEnvio_Protocolo, $dtRecebimento_Protocolo);
+	$Item = new Reuniao();
+	$Item->SetValues($id_Reuniao, $id_Usuario, $dt_Reuniao, $hora_Reuniao, $local_Reuniao, $pauta_Reuniao);
 	
 	
 		

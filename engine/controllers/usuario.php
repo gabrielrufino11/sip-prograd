@@ -4,21 +4,19 @@
 
 	//parte1
 	
-	$id_Protocolo = $_POST['id_Protocolo'];
-	$remetente_Protocolo = $_POST['remetente_Protocolo'];
-	$id_TipoDocumento = $_POST['id_TipoDocumento'];
 	$id_Usuario = $_POST['id_Usuario'];
-	$descricaoTeor_Protocolo = $_POST['descricaoTeor_Protocolo'];
-    $dtEnvio_Protocolo = $_POST['dtEnvio_Protocolo'];
-    $dtRecebimento_Protocolo = $_POST['dtRecebimento_Protocolo'];
+	$nome_Usuario = $_POST['nome_Usuario'];
+	$senha_Usuario = $_POST['senha_Usuario'];
+	$status_Usuario = $_POST['status_Usuario'];
+	$permissao_Usuario = $_POST['permissao_Usuario'];
 	
 	
 	//parte2
 	$action = $_POST['action'];
 	
 	//parte3
-	$Item = new Protocolo();
-	$Item->SetValues($id_Protocolo, $remetente_Protocolo, $id_TipoDocumento, $id_Usuario, $descricaoTeor_Protocolo, $dtEnvio_Protocolo, $dtRecebimento_Protocolo);
+	$Item = new Usuario();
+	$Item->SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $status_Usuario, $permissao_Usuario);
 	
 	
 		

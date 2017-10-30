@@ -77,7 +77,8 @@
 					 t1.dt_Reuniao,
 					 t1.hora_Reuniao,
                      t1.local_Reuniao,
-                     t1.pauta_Reuniao
+					 t1.pauta_Reuniao
+				FROM
 					reuniao AS t1
 				WHERE
 					t1.id_Reuniao  = '$id'

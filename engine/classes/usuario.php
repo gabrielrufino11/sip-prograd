@@ -73,7 +73,8 @@
 					 t1.senha_Usuario,
 					 t1.status_Usuario,
 					 t1.permissao_Usuario
-					usuario AS t1
+				FROM
+					 usuario AS t1
 				WHERE
 					t1.id_Usuario  = '$id'
 

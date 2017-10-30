@@ -58,6 +58,7 @@
 				SELECT
 					 t1.id_TipoDocumento,
 					 t1.nome_TipoDocumento
+				FROM
 					tipodocumento AS t1
 				WHERE
 					t1.id_TipoDocumento  = '$id'
