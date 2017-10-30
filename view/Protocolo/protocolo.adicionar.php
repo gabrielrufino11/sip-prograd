@@ -25,13 +25,13 @@
 			console.log('tipo'+dtEnvio_Protocolo);
 			console.log('tipo'+dtRecebimento_Protocolo);
 			//2 validar os inputs
-			if(remetente_Protocolo === "" || id_TipoDocumento === ""  || id_Usuario === "" || descricaoTeor_Protocolo === ""){
+			if(remetente_Protocolo === "" || id_TipoDocumento === ""  || id_Usuario === "" || descricaoTeor_Protocolo === "" || dtEnvio_Protocolo === "" || dtRecebimento_Protocolo === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			
 			else{
 				$.ajax({
-					   url: 'core/controle/protocolo.php',
+					   url: 'engine/controllers/protocolo.php',
 					   data: {
 							id_Protocolo : null,
 							remetente_Protocolo : remetente_Protocolo,
@@ -64,8 +64,8 @@
 					   },
 					   success: function(data) {
 							console.log(data);							
-							if(data === "true"){
-								alert('Item adicionado com sucesso!');
+							if($.trim(data) === "true"){
+								alert('Protocolo cadastrado com sucesso!');
     							$('#loader').load('view/Protocolo/protocolo.lista.php');	
 							}
 							else{
@@ -88,7 +88,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -98,7 +98,7 @@
     <li class="active">Adicionar Dados</li>
 </ol>
 
-<h1>
+<h1 align="center">
 	Cadastro de Protocolo
 </h1>
 
@@ -106,13 +106,14 @@
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    	Voltar
+    	Meus Protocolos
     </button>
 	<button id="Salvar" type="button" class="btn btn-success"><i class="fa fa-hdd-o" aria-hidden="true"></i>
     	Salvar
     </button>
 </div>
 
+<br>
 <br>
 <br>
 
@@ -129,13 +130,12 @@
  			<select id="id_TipoDocumento" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
             	<option value="0">Escolha o tipo do documento</option>
                 <?php 
-					$DBAuxiliar = new DBAuxiliar();
-					$TipoDocumento = new TipoDocumento();
-					$TiposDocumentos = $DBAuxiliar->LerTodosTiposDocumentos();
+					$TiposDocumentos = new TipoDocumento();
+					$TiposDocumentos = $TiposDocumentos->ReadAll();
 					foreach($TiposDocumentos as $TipoDocumento){
 						?>
-                        	<option value="<?php echo $TipoDocumento->id_TipoDocumento; ?>"><?php echo $TipoDocumento->nome_TipoDocumento; ?></option>
-                        <?php
+						<option value="<?php echo $TipoDocumento['id_TipoDocumento']; ?>"><?php echo $TipoDocumento['nome_TipoDocumento']; ?></option>                        
+						<?php
 					}
 				?>           
             	</select>
@@ -150,12 +150,11 @@
  				<select id="id_Usuario" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
             	<option value="0">Escolha o destinatário</option>
                 <?php 
-					$DBAuxiliar = new DBAuxiliar();
-					$Usuario = new Usuario();
-					$Usuarios = $DBAuxiliar->LerTodosUsuarios();
+					$Usuarios = new Usuario();
+					$Usuarios = $Usuarios->ReadAll();
 					foreach($Usuarios as $Usuario){
 						?>
-                        	<option value="<?php echo $Usuario->id_Usuario; ?>"><?php echo $Usuario->nome_Usuario; ?></option>
+                        	<option value="<?php echo $Usuario['id_Usuario']; ?>"><?php echo $Usuario['nome_Usuario']; ?></option>
                         <?php
 					}
 				?>           

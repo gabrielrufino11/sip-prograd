@@ -16,17 +16,11 @@
 		$('.ExcluirItem').click(function(e) {
             e.preventDefault();
 			var id_Protocolo = $(this).attr('id');
-			if(confirm("Tem certeza que deseja excluir este dado?")){
+			if(confirm("Tem certeza que deseja excluir este Protocolo?")){
 				$.ajax({
-					   url: 'core/controle/protocolo.php',
+					   url: 'engine/controllers/protocolo.php',
 					   data: {
 							id_Protocolo : id_Protocolo,
-							remetente_Protocolo : null,
-							id_TipoDocumento : null,
-							id_Usuario : null,
-							descricaoTeor_Protocolo : null,
-							dtEnvio_Protocolo : null,
-							dtRecebimento_Protocolo : null,
 							action: 'delete'
 					   },
 					   error: function(jqXHR, exception) {
@@ -52,7 +46,7 @@
 					   success: function(data) {
 							//console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item deletado com sucesso!');
+								alert('Protocolo deletado com sucesso!');
     							$('#loader').load('view/Protocolo/protocolo.lista.php');	
 							}
 							else{
@@ -65,7 +59,7 @@
 			}
 			
         });
-		$('#tabelaProtocolo').DataTable({
+		/* $('#tabelaProtocolo').DataTable({
 			"language": {
 				"decimal":        "",
 				"emptyTable":     "Nenhum dado disponível para exibição",
@@ -91,12 +85,12 @@
 			}
 }	
 		
-		});
+		}); */
     });
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -107,7 +101,7 @@
 </ol>
 
 <br>
-<h1>
+<h1 align="center">
 	Meus Protocolos
 </h1>
 
@@ -127,16 +121,15 @@
 <br>
 
 <?php
-	$DBAuxiliar = new DBAuxiliar();
-	$Protocolo = new Protocolo();
-	$Protocolos = $DBAuxiliar->LerTodosProtocolos();
+	$Protocolos = new Protocolo();
+	$Protocolos = $Protocolos->ReadAll();
 	
 	//var_dump($Protocolo);
 
 	if(empty($Protocolos)){
 		?>
         	<section class="well">
-            	<h4>Nenhum dado encotrado.</h4>
+            	<h4>Você não possui nenhum Protocolo.</h4>
             </section>
         <?php
 	}
@@ -162,22 +155,23 @@
 					?>    
                     <tr>
                         <td><?php echo $n ?></td>
-                        <td><?php echo $Protocolo->remetente_Protocolo; ?></td>
+                        <td><?php echo $Protocolo['remetente_Protocolo']; ?></td>
                         <td><?php 
 								$Usuario = new Usuario();
-								$Usuario = $DBAuxiliar->LerUsuario($Protocolo->id_Usuario);
-								echo $Usuario->nome_Usuario;
+								$Usuario = $Usuario->Read($Protocolo['id_Usuario']);
+								echo $Usuario['nome_Usuario'];
 							?>
                         </td>
-                        <td><?php echo $Protocolo->descricaoTeor_Protocolo; ?></td>
+                        <td><?php echo $Protocolo['descricaoTeor_Protocolo']; ?></td>
+						<td><?php echo $Protocolo['dtEnvio_Protocolo']; ?></td>
                         <td class="align-center " >
-                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Protocolo->id_Protocolo; ?>">
+                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Protocolo['id_Protocolo']; ?>">
                             	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     							Editar
     						</button>
                         </td>
-                       <td class="align-center" >
-                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $Protocolo->id_Protocolo; ?>">
+                       <td class="align-center">
+                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $Protocolo['id_Protocolo']; ?>">
                             	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     							Deletar
     						</button>
