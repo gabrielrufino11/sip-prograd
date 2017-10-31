@@ -70,7 +70,7 @@
         </div>
         <div class="col-lg-3 col-lg-offset-2 col-md-4">
         <div class="well text-center"><h6 id="classroom-edition-header" data-i18n="new_home.classroom_edition"></h6>
-        <div><a id="adicionar_protocolo_link_1"><button data-event-action="Homepage Click Teacher Button CTA" data-i18n="new_home.im_a_teacher" class="teacher-btn btn btn-primary btn-lg btn-block" style="background-color:#C30">Novo Protocolo</button></a></div>
+        <div><a id="adicionar_protocolo_link_1"><button data-event-action="Homepage Click Teacher Button CTA" data-i18n="new_home.im_a_teacher" class="teacher-btn btn btn-primary btn-lg btn-block" style="background-color:#0000FF">Novo Protocolo</button></a></div>
         <br><br>
         <div><a id="lista_protocolo_link_1"><button data-event-action="Homepage Click Student Button CTA" data-i18n="new_home.im_a_student" class="student-btn btn btn-forest btn-lg btn-block" style="background-color:#CC6">Meus Protocolos</button></a></div>
         <br><br>
