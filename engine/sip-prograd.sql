@@ -74,7 +74,14 @@ CREATE TABLE `usuario` (
 --  Records of `usuario`
 -- ----------------------------
 BEGIN;
-INSERT INTO `usuario` VALUES ('1', 'DAP', '1234', '1', '1'), ('2', 'DAA', '1234', '1', '1'), ('3', 'DMAA', '1234', '1', '1'), ('4', 'DDLA', '1234', '1', '1'), ('5', 'DERD', '1234', '1', '1'), ('6', 'Pró-Reitor', '1234', '1', '1'), ('7', 'Secretaria', '1234', '1', '1'), ('8', 'COPESE', '1234', '1', '1');
+INSERT INTO `usuario` VALUES ('1', 'DAP', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('2', 'DAA', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('3', 'DMAA', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('4', 'DDLA', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('5', 'DERD', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('6', 'Pró-Reitor', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('7', 'Secretaria', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('8', 'COPESE', '1234', '1', '1', '');
 COMMIT;
 
 -- ----------------------------
