@@ -18,14 +18,9 @@
 			var id_Reuniao = $(this).attr('id');
 			if(confirm("Tem certeza que deseja excluir este dado?")){
 				$.ajax({
-					   url: 'core/controle/reuniao.php',
+					   url: 'engine/controllers/reuniao.php',
 					   data: {
 							id_Reuniao : id_Reuniao,
-							id_Usuario : null,
-							dt_Reuniao : null,
-							hora_Reuniao : null,
-							local_Reuniao : null,
-							pauta_Reuniao : null,
 							action: 'delete'
 					   },
 					   error: function(jqXHR, exception) {
@@ -51,7 +46,7 @@
 					   success: function(data) {
 							//console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item deletado com sucesso!');
+								alert('Reunião excluída com sucesso!');
     							$('#loader').load('view/Reuniao/reuniao.lista.php');	
 							}
 							else{
@@ -64,7 +59,7 @@
 			}
 			
         });
-		$('#tabelaReuniao').DataTable({
+		/*	$('#tabelaTurma').DataTable({
 			"language": {
 				"decimal":        "",
 				"emptyTable":     "Nenhum dado disponível para exibição",
@@ -87,15 +82,15 @@
 				"aria": {
 					"sortAscending":  ": ativar ordenação crescente",
 					"sortDescending": ": ativar ordenação decrescente"
+				}
 			}
-}	
 		
-		});
+		});*/
     });
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -106,12 +101,14 @@
 </ol>
 
 <br>
-<h1>
+<h1 align="center">
 	Minhas Reuniões
 </h1>
 
 <br>
 <br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Atualizar" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
@@ -126,9 +123,8 @@
 <br>
 
 <?php
-	$DBAuxiliar = new DBAuxiliar();
-	$Reuniao = new Reuniao();
-	$Reunioes = $DBAuxiliar->LerTodosReunioes();
+	$Reunioes = new Reuniao();
+	$Reunioes = $Reunioes->ReadAll();
 	
 	//var_dump($Reuniao);
 
@@ -165,21 +161,23 @@
                         <td><?php echo $n ?></td>
                         <td><?php 
 								$Usuario = new Usuario();
-								$Usuario = $DBAuxiliar->LerUsuario($Reuniao->id_Usuario);
-								echo $Usuario->nome_Usuario;
+								$Usuario = $Usuario->Read($Reuniao['id_Usuario']);
+								foreach($Usuarios as $Usuario){
+									echo $Usuario['nome_Usuario'];
+								}
 							?></td>
-                        <td><?php echo $Reuniao->dt_Reuniao; ?></td>
-                        <td><?php echo $Reuniao->hora_Reuniao; ?></td>
-                        <td><?php echo $Reuniao->local_Reuniao; ?></td>
-                        <td><?php echo $Reuniao->pauta_Reuniao; ?></td>
+                        <td><?php echo $Reuniao['dt_Reuniao']; ?></td>
+                        <td><?php echo $Reuniao['hora_Reuniao']; ?></td>
+                        <td><?php echo $Reuniao['local_Reuniao']; ?></td>
+                        <td><?php echo $Reuniao['pauta_Reuniao']; ?></td>
                         <td class="align-center " >
-                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Reuniao->id_Reuniao; ?>">
+                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Reuniao['id_Reuniao']; ?>">
                             	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     							Editar
     						</button>
                         </td>
                        <td class="align-center" >
-                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $Reuniao->id_Reuniao; ?>">
+                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $Reuniao['id_Reuniao']; ?>">
                             	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     							Deletar
     						</button>
@@ -194,3 +192,5 @@
 		<?php	
     }
 	?>
+
+	</div>

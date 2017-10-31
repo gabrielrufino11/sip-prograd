@@ -200,6 +200,35 @@
 			--------------------------------------------------
 		
 		*/
+
+		public function ReadByOthers() {
+			$sql = "
+				SELECT
+					 t1.id_Reuniao,
+					 t1.id_Usuario,
+					 t1.dt_Reuniao,
+					 t1.hora_Reuniao,
+					 t1.local_Reuniao,
+					 t1.pauta_Reuniao
+				FROM
+					reuniao AS t1
+				WHERE
+					t1.id_Usuario='$this->id_Usuario' AND
+					t1.dt_Reuniao='$this->dt_Reuniao' AND
+					t1.hora_Reuniao='$this->hora_Reuniao' AND
+					t1.local_Reuniao='$this->local_Reuniao' AND
+					t1.pauta_Reuniao='$this->pauta_Reuniao'
+
+			";
+			
+			
+			$DB = new DB();
+			$DB->open();
+			$Data = $DB->fetchData($sql);
+			
+			$DB->close();
+			return $Data[0]; 
+		}
 		
 		
 		/*

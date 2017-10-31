@@ -5,6 +5,44 @@
 			//loader
     		$('#loader').load('view/Reuniao/reuniao.lista.php');	
 		});
+
+		function updateAluno(id_Usuario,data){
+//console.log(data);
+			var nome_Usuario = data.nome_Usuario;
+			var senha_Usuario = data.senha_Usuario;
+			var status_Usuario = data.status_Usuario;
+			var permissao_Usuario = data.permissao_Usuario;
+
+			//console.log(id_Usuario,nome_Usuario,senha_Usuario,status_Usuario,permissao_Usuario, id_Reuniao);
+			$.ajax({
+					   url: 'engine/controllers/usuario.php',
+					   data: {
+							id_Usuario : id_Usuario,
+							nome_Usuario : nome_Usuario,
+							senha_Usuario : senha_Usuario,
+							status_Usuario : status_Usuario,
+							permissao_Usuario : permissao_Usuario,
+							id_Reuniao : id_Reuniao,
+							action: 'updateReuniao'
+					   },
+					   error: function(jqXHR, exception) {
+							alert('Erro na conexão com o servidor. Tente novamente em alguns segundos.');
+
+							//cosole.log(msg);
+					   },
+					   success: function(data) {
+							console.log(data);
+							if(data=='true'){
+								//alert("Salvou");
+							}					
+							else{
+								alert('Algum erro ocorreu e o salvamento pode ter sido mal sucedido.');
+							}
+					   },
+					   
+					   type: 'POST'
+					});	
+		}
 		
 		$('#Salvar').click(function(e) {
 			e.preventDefault();
@@ -30,7 +68,7 @@
 			
 			else{
 				$.ajax({
-					   url: 'core/controle/reuniao.php',
+					   url: 'engine/controllers/reuniao.php',
 					   data: {
 							id_Reuniao : null,
 							id_Usuario : id_Usuario,
@@ -61,10 +99,18 @@
 							//cosole.log(msg);
 					   },
 					   success: function(data) {
-							console.log(data);							
-							if(data === "true"){
-								alert('Item adicionado com sucesso!');
-    							$('#loader').load('view/Reuniao/reuniao.lista.php');	
+						var data = $.parseJSON(data);
+						
+								if(typeof data.id_Reuniao != "undefined"){
+					
+									ids_usuarios=$("#id_Usuario").chosen().val();
+	
+									for(var i=0;i<ids_usuarios.length;i++){
+										updateUsuario(ids_usuarios[i],data);
+									}
+	
+									alert('Reunião cadastrada com sucesso!');
+									$('#loader').load('view/Reuniao/reuniao.lista.php');	
 							}
 							else{
 								alert('Algum erro ocorreu e o salvamento pode ter sido mal sucedido.');	
@@ -79,6 +125,17 @@
 			
 			//4 observar a resposta, e falar pra usuario o que aconteceu
 		});
+
+		var config = {
+                  '.chosen-select'           : {},
+                  '.chosen-select-deselect'  : {allow_single_deselect:true},
+                  '.chosen-select-no-single' : {disable_search_threshold:10},
+                  '.chosen-select-no-results': {no_results_text:'Oops, nada encontrado!'},
+                  '.chosen-select-width'     : {width:"95%"}
+              }
+              for (var selector in config) {
+                  $(selector).chosen(config[selector]);
+              }
 		
 		
 		//mascaras abaixo
@@ -89,7 +146,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -107,7 +164,7 @@
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    	Voltar
+    	Minhas Reuniões
     </button>
 	<button id="Salvar" type="button" class="btn btn-success"><i class="fa fa-hdd-o" aria-hidden="true"></i>
     	Salvar
@@ -122,14 +179,13 @@
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Participantes *</span>
 				<select id="id_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
-            	<option value="0">Escolha o(s) participante(s)</option>
+            	<option value="0" disabled>Escolha o(s) participante(s)</option>
                 <?php
-					$DBAuxiliar = new DBAuxiliar();
-					$Usuario = new Usuario();
-					$Usuarios = $DBAuxiliar->LerTodosUsuarios();
+					$Usuarios = new Usuario();
+					$Usuarios = $Usuarios->ReadAll();
 					foreach($Usuarios as $Usuario){
 						?>
-                        	<option value="<?php echo $Usuario->id_Usuario; ?>"><?php echo $Usuario->nome_Usuario; ?></option>
+                        	<option value="<?php echo $Usuario['id_Usuario']; ?>"><?php echo $Usuario['nome_Usuario']; ?></option>
                         <?php
 					}
 				?>           

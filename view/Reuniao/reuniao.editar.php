@@ -1,5 +1,17 @@
 <script>
 	$(document).ready(function(e) {
+
+		var config = {
+				'.chosen-select'           : {width:"100%", no_results_text:'Nenhum Morador com nome'},
+				'.chosen-select-deselect'  : {allow_single_deselect:true},
+				'.chosen-select-no-single' : {disable_search_threshold:10},
+				'.chosen-select-no-results': {no_results_text:'Nenhum Morador com nome'},
+				'.chosen-select-width'     : {width:"100%"}
+			}
+			for (var selector in config) {
+				$(selector).chosen(config[selector]);
+			}
+
 		$('#Voltar').click(function(e) {
 			e.preventDefault();
 			//loader
@@ -62,10 +74,18 @@
 							//cosole.log(msg);
 					   },
 					   success: function(data) {
-						console.log(data);							
-							if($.trim(data) === "true"){
-								alert('Item editado com sucesso!');
-    							$('#loader').load('view/Reuniao/reuniao.lista.php');	
+						var data = $.parseJSON(data);
+					
+							if(typeof data.id_Reuniao != "undefined"){
+				
+								ids_usuarios=$("#id_Usuario").chosen().val();
+
+								for(var i=0;i<ids_usuarios.length;i++){
+									updateUsuario(ids_usuarios[i],data);
+								}
+
+								alert('Reunião atualizada com sucesso!');
+								$('#loader').load('view/Reuniao/reuniao.lista.php');
 							}
 							else{
 								alert('Algum erro ocorreu e a ediçao pode ter sido mal sucedida.');	
@@ -89,14 +109,9 @@
 			//alert(id);
 			if (confirm("Tem certeza que deseja excluir?")){
 				$.ajax({
-					   url: 'core/controle/reuniao.php',
+					   url: 'engine/controllers/reuniao.php',
 					   data: {
 							id_Reuniao : id_Reuniao,
-							id_Usuario : null,
-							dt_Reuniao : null,
-							hora_Reuniao : null,
-							local_Reuniao : null,
-							pauta_Reuniao : null,
 							action: 'delete'
 					   },
 
@@ -106,7 +121,7 @@
 					   success: function(data) {
 							console.log(data);
 							if($.trim(data) === 'true'){
-								alert('Item excluído com sucesso!');
+								alert('Reunião excluída com sucesso!');
 								$('#loader').load('view/Reuniao/reuniao.lista.php');
 							}
 							else{
@@ -123,15 +138,13 @@
 		//mascaras abaixo
 	});
 	
-	 $(document).ready(function () {
-        $(function () {
-            $("#chzn-select").as(Chosen).chosen();
-         });
-   });
+	$(".chosen-select").chosen();
+	$("#id_Aluno").chosen().val();
+	$("#meet_participants").chosen().val(["hola", "mundo", "cruel"]);
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -141,7 +154,7 @@
     <li class="active">Editar Dados</li>
 </ol>
 
-<h1>
+<h1 align="center">
 	Edição de Reunião
 </h1>
 
@@ -149,7 +162,7 @@
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    	Voltar
+    	Minhas Reuniões
     </button>
 	<button id="Salvar" type="button" class="btn btn-success"><i class="fa fa-hdd-o" aria-hidden="true"></i>
     	Salvar
@@ -162,9 +175,8 @@
 <br>
 <br>
 <?php 
-	$DBAuxiliar = new DBAuxiliar();
 	$Reuniao = new Reuniao();
-	$Reuniao = $DBAuxiliar->LerReuniao($_POST['id_Reuniao']);
+	$Reuniao = $Reuniao->Read($_POST['id_Reuniao']);
 ?>
 <section class="row formAdiconarDados">
 	<section class="col-md-6">
@@ -174,13 +186,14 @@
             	<option value="0">Escolha o participante</option>
                 <?php
 					$Usuario = new Usuario();
-					$Usuarios = $DBAuxiliar->LerTodosUsuarios();
+					$Usuarios = $Usuario->ReadAll();
+					if(!empty($Usuarios)) {
 					foreach($Usuarios as $Usuario){
 						?>
-                        	<option value="<?php echo $Usuario->id_Usuario; ?>" <?php if($Reuniao->id_Usuario === $Usuario->id_Usuario){echo 'selected';} ?>><?php echo $Usuario->nome_Usuario; ?></option>
+                        	<option value="<?php echo $Usuario['id_Usuario']; ?>" <?php if($Usuario['id_Reuniao'] === $Reuniao['id_Reuniao']){echo " selected";} ?>><?php echo $Usuario['nome_Usuario']; ?></option>
                         <?php
-					}
-				?>           
+					} }
+				?>         
             </select>
 		</div>    	
     </section>
@@ -188,7 +201,7 @@
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Data *</span>
- 			<input type="date" class="form-control" id="dt_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao->dt_Reuniao;?>">
+ 			<input type="date" class="form-control" id="dt_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao['dt_Reuniao'];?>">
 		</div>
     </section>
 </section>
@@ -198,14 +211,14 @@
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Hora *</span>
- 			<input type="time" class="form-control" id="hora_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao->hora_Reuniao;?>">
+ 			<input type="time" class="form-control" id="hora_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao['hora_Reuniao'];?>">
 		</div>
     </section>
     
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Local *</span>
- 			<input type="text" class="form-control" id="local_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao->local_Reuniao;?>">
+ 			<input type="text" class="form-control" id="local_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao['local_Reuniao'];?>">
 		</div>
     </section>
 </section>
@@ -217,7 +230,7 @@
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Pauta *</span>
- 			<input id="pauta_Reuniao" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" width="30" value="<?php echo $Reuniao->pauta_Reuniao; ?>">
+ 			<input id="pauta_Reuniao" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" width="30" value="<?php echo $Reuniao['pauta_Reuniao']; ?>">
 		</div>
     </section>
 </section>
@@ -229,7 +242,7 @@
 	<form action="envia_foto.php" method="post" enctype="multipart/form-data"> <input type="file" name="Arquivo" id="Arquivo"><br><input type="reset" value="Apagar"> </form>
 </section>
 
-<input type="hidden" id="id_Reuniao" value="<?php echo $Reuniao->id_Reuniao;?>">
+<input type="hidden" id="id_Reuniao" value="<?php echo $Reuniao['id_Reuniao'];?>">
 
 <br>
 
