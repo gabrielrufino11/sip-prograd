@@ -28,7 +28,7 @@
 			
 			
 			//2 validar os inputs
-			if(id_Protocolo === "" || remetente_Protocolo === "" || id_TipoDocumento === "" || id_Usuario === "" || descricaoTeor_Protocolo === ""){
+			if(id_Protocolo === "" || remetente_Protocolo === "" || id_TipoDocumento === "" || id_Usuario === "" || descricaoTeor_Protocolo === "" || dtEnvio_Protocolo === "" || dtRecebimento_Protocolo === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			else{
@@ -67,7 +67,7 @@
 					   success: function(data) {
 						console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item editado com sucesso!');
+								alert('Protocolo editado com sucesso!');
     							$('#loader').load('view/Protocolo/protocolo.lista.php');	
 							}
 							else{
@@ -92,15 +92,9 @@
 			//alert(id);
 			if (confirm("Tem certeza que deseja excluir o Protocolo?")){
 				$.ajax({
-					   url: 'core/controle/protocolo.php',
+					   url: 'engine/controllers/protocolo.php',
 					   data: {
 							id_Protocolo : id_Protocolo,
-							remetente_Protocolo : null,
-							id_TipoDocumento : null,
-							id_Usuario : null,
-							descricaoTeor_Protocolo : null,
-							dtEnvio_Protocolo : null,
-							dtRecebimento_Protocolo : null,
 							action: 'delete'
 					   },
 

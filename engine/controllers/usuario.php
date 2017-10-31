@@ -27,7 +27,7 @@
 		case 'create':
 			
 
-			$res = $Item->Create();
+			$res = $Item->Create($Usuario);
 			if($res == NULL){
 				$res = "true";
 			}
@@ -45,7 +45,7 @@
 		
 			
 			
-			$res = $Item->Update();
+			$res = $Item->Update($id_Usuario, $Usuario);
 
 			if($res === NULL){
 				$res= 'true';
@@ -60,7 +60,7 @@
 		
 		case 'delete':
 		
-			$res = $Item->Delete();
+			$res = $Item->Delete($id_Usuario);
 			
 			if($res === NULL){
 				$res= 'true';
