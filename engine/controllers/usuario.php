@@ -9,6 +9,7 @@
 	$senha_Usuario = $_POST['senha_Usuario'];
 	$status_Usuario = $_POST['status_Usuario'];
 	$permissao_Usuario = $_POST['permissao_Usuario'];
+	$id_Reuniao = $_POST['id_Reuniao'];
 	
 	
 	//parte2
@@ -16,7 +17,7 @@
 	
 	//parte3
 	$Item = new Usuario();
-	$Item->SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $status_Usuario, $permissao_Usuario);
+	$Item->SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $status_Usuario, $permissao_Usuario, $id_Reuniao);
 	
 	
 		
@@ -71,7 +72,22 @@
 			echo $res;
 
 		
-		break;	
+		break;
+		
+		case 'updateReuniao':
+		
+					
+					$res = $Item->UpdateReuniao($id_Usuario);
+					
+					if($res === NULL){
+						$res= 'true';
+					}
+					else{
+						$res = 'false';
+					}
+					echo $res;
+					
+				break;
 		
 		
 	}
