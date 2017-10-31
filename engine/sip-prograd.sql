@@ -14,25 +14,23 @@
  Date: 09/12/2016 08:38:42 AM
 */
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
 --  Table structure for `protocolo`
 -- ----------------------------
 
+DROP TABLE IF EXISTS `protocolo`;
 CREATE TABLE `protocolo` (
-  `id_Protocolo` int(11) NOT NULL,
+  `id_Protocolo` int(11) NOT NULL AUTO_INCREMENT,
   `remetente_Protocolo` varchar(100) NOT NULL,
   `id_TipoDocumento` int(11) NOT NULL,
   `id_Usuario` int(11) NOT NULL,
   `descricaoTeor_Protocolo` varchar(1000) NOT NULL,
   `dtEnvio_Protocolo` date NOT NULL,
-  `dtRecebimento_Protocolo` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dtRecebimento_Protocolo` date DEFAULT NULL,
+  PRIMARY KEY (`id_Protocolo`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `protocolo`
@@ -44,11 +42,12 @@ COMMIT;
 -- ----------------------------
 --  Table structure for `tipodocumento`
 -- ----------------------------
-
+DROP TABLE IF EXISTS `tipodocumento`;
 CREATE TABLE `tipodocumento` (
-  `id_TipoDocumento` int(11) NOT NULL,
-  `nome_TipoDocumento` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `id_TipoDocumento` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_TipoDocumento` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_TipoDocumento`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `tipodocumento`
@@ -60,14 +59,16 @@ COMMIT;
 -- ----------------------------
 --  Table structure for `usuario`
 -- ----------------------------
-
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
-  `id_Usuario` int(11) NOT NULL,
+  `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome_Usuario` varchar(100) NOT NULL,
   `senha_Usuario` varchar(40) NOT NULL,
   `status_Usuario` int(1) NOT NULL,
-  `permissao_Usuario` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `permissao_Usuario` int(1) NOT NULL,
+  `id_Reuniao` int(11) NOT NULL,
+  PRIMARY KEY (`id_Usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `usuario`
@@ -79,67 +80,13 @@ COMMIT;
 -- ----------------------------
 --  Table structure for `reuniao`
 -- ----------------------------
-
+DROP TABLE IF EXISTS `reuniao`;
 CREATE TABLE `reuniao` (
-  `id_Reuniao` int(11) NOT NULL,
+  `id_Reuniao` int(11) NOT NULL AUTO_INCREMENT,
   `id_Usuario` int(11) NOT NULL,
   `dt_Reuniao` date NOT NULL,
   `hora_Reuniao` time NOT NULL,
   `local_Reuniao` varchar(100) NOT NULL,
-  `pauta_Reuniao` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `protocolo`
---
-ALTER TABLE `protocolo`
-  ADD PRIMARY KEY (`id_Protocolo`);
-
---
--- Indexes for table `tipodocumento`
---
-ALTER TABLE `tipodocumento`
-  ADD PRIMARY KEY (`id_TipoDocumento`);
-  
---
--- Indexes for table `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_Usuario`);
-  
---
--- Indexes for table `reuniao`
---
-ALTER TABLE `reuniao`
-  ADD PRIMARY KEY (`id_Reuniao`);
-  
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `protocolo`
---
-ALTER TABLE `protocolo`
-  MODIFY `id_Protocolo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tipodocumento`
---
-ALTER TABLE `tipodocumento`
-  MODIFY `id_TipoDocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
---  
--- AUTO_INCREMENT for table `reuniao`
---
-ALTER TABLE `reuniao`
-  MODIFY `id_Reuniao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
+  `pauta_Reuniao` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_Reuniao`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
