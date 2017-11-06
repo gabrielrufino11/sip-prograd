@@ -201,7 +201,7 @@
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Data *</span>
- 			<input type="date" class="form-control" id="dt_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao['dt_Reuniao'];?>">
+ 			<input type="date" class="form-control" id="dt_Reuniao" aria-describedby="basic-addon1" placeholder="" value="<?php echo $Reuniao['dt_Reuniao'];?>">
 		</div>
     </section>
 </section>
@@ -211,14 +211,14 @@
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Hora *</span>
- 			<input type="time" class="form-control" id="hora_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao['hora_Reuniao'];?>">
+ 			<input type="time" class="form-control" id="hora_Reuniao" aria-describedby="basic-addon1" placeholder="" value="<?php echo $Reuniao['hora_Reuniao'];?>">
 		</div>
     </section>
     
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Local *</span>
- 			<input type="text" class="form-control" id="local_Reuniao" aria-describedby="basic-addon1" disabled placeholder="" value="<?php echo $Reuniao['local_Reuniao'];?>">
+ 			<input type="text" class="form-control" id="local_Reuniao" aria-describedby="basic-addon1" placeholder="" value="<?php echo $Reuniao['local_Reuniao'];?>">
 		</div>
     </section>
 </section>
