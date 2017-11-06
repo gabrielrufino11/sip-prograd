@@ -191,7 +191,11 @@
 <br>
 
 <section>
-	<form action="envia_foto.php" method="post" enctype="multipart/form-data"> <input type="file" name="Arquivo" id="Arquivo"><br><input type="reset" value="Apagar"> </form>
+	<form method="post" action="view/Protocolo/recebe_upload.php" enctype="multipart/form-data">
+  		<label>Arquivo</label>
+  		<input type="file" name="arquivo" />
+  		<input type="submit" value="Enviar" />
+	</form>
 </section>
 
 <br>
