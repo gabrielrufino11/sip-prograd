@@ -139,7 +139,7 @@
 	});
 	
 	$(".chosen-select").chosen();
-	$("#id_Aluno").chosen().val();
+	$("#id_Usuario").chosen().val();
 	$("#meet_participants").chosen().val(["hola", "mundo", "cruel"]);
 </script>
 

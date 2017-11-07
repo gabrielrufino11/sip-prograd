@@ -6,7 +6,7 @@
     		$('#loader').load('view/Reuniao/reuniao.lista.php');	
 		});
 
-		function updateAluno(id_Usuario,data){
+		function updateUsuario(id_Usuario,data){
 //console.log(data);
 			var nome_Usuario = data.nome_Usuario;
 			var senha_Usuario = data.senha_Usuario;
@@ -17,7 +17,6 @@
 			$.ajax({
 					   url: 'engine/controllers/usuario.php',
 					   data: {
-							id_Usuario : id_Usuario,
 							nome_Usuario : nome_Usuario,
 							senha_Usuario : senha_Usuario,
 							status_Usuario : status_Usuario,
@@ -50,19 +49,17 @@
 			//1 instansciar e recuperar valores dos inputs
 			
 			var id_Reuniao = $('#id_Reuniao').val();
-			var id_Usuario = $('#id_Usuario').val();
 			var dt_Reuniao = $('#dt_Reuniao').val();
 			var hora_Reuniao = $('#hora_Reuniao').val();	
 			var local_Reuniao = $('#local_Reuniao').val();
 			var pauta_Reuniao = $('#pauta_Reuniao').val();
 			
-			console.log('tipo'+id_Usuario);
 			console.log('tipo'+dt_Reuniao);
 			console.log('tipo'+hora_Reuniao);
 			console.log('tipo'+local_Reuniao);
 			console.log('tipo'+pauta_Reuniao);
 			//2 validar os inputs
-			if(id_Usuario === "" || dt_Reuniao === ""  || hora_Reuniao === "" || local_Reuniao === "" || pauta_Reuniao === ""){
+			if(dt_Reuniao === ""  || hora_Reuniao === "" || local_Reuniao === "" || pauta_Reuniao === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			
@@ -71,7 +68,6 @@
 					   url: 'engine/controllers/reuniao.php',
 					   data: {
 							id_Reuniao : null,
-							id_Usuario : id_Usuario,
 							dt_Reuniao : dt_Reuniao,
 							hora_Reuniao : hora_Reuniao,
 							local_Reuniao : local_Reuniao,

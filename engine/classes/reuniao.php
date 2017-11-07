@@ -6,7 +6,6 @@
 		//Variaveis da classe
 		//Nome das variaveis devem ser de acordo com as colunas da tabela respectiva no bd
 		private $id_Reuniao;
-		private $id_Usuario;
 		private $dt_Reuniao;
 		private $hora_Reuniao;
         private $local_Reuniao;
@@ -15,9 +14,8 @@
 		//setters
 		
 		//Funcao que seta uma instancia da classe
-		public function SetValues($id_Reuniao, $id_Usuario, $dt_Reuniao, $hora_Reuniao, $local_Reuniao, $pauta_Reuniao) { 
+		public function SetValues($id_Reuniao, $dt_Reuniao, $hora_Reuniao, $local_Reuniao, $pauta_Reuniao) { 
 			$this->id_Reuniao = $id_Reuniao;
-			$this->id_Usuario = $id_Usuario;
 			$this->dt_Reuniao = $dt_Reuniao;
 			$this->hora_Reuniao = $hora_Reuniao;
             $this->local_Reuniao = $local_Reuniao;
@@ -44,7 +42,6 @@
 				INSERT INTO reuniao 
 						  (
                             id_Reuniao,
-                            id_Usuario,
                             dt_Reuniao,
                             hora_Reuniao,
                             local_Reuniao,
@@ -53,7 +50,6 @@
 				VALUES 
 					(
 				 			'$this->id_Reuniao',
-				 			'$this->id_Usuario',
 				 			'$this->dt_Reuniao',
 							'$this->hora_Reuniao',
                             '$this->local_Reuniao',
@@ -73,7 +69,6 @@
 			$sql = "
 				SELECT
 					 t1.id_Reuniao,
-					 t1.id_Usuario,
 					 t1.dt_Reuniao,
 					 t1.hora_Reuniao,
                      t1.local_Reuniao,
@@ -99,7 +94,6 @@
 			$sql = "
 				SELECT
 					 t1.id_Reuniao,
-					 t1.id_Usuario,
 					 t1.dt_Reuniao,
 					 t1.hora_Reuniao,
                      t1.local_Reuniao,
@@ -136,7 +130,6 @@
 			$sql = "
 				SELECT
 					 t1.id_Reuniao,
-					 t1.id_Usuario,
 					 t1.dt_Reuniao,
 					 t1.hora_Reuniao,
                      t1.local_Reuniao,
@@ -162,7 +155,6 @@
 			$sql = "
 				UPDATE reuniao SET
 				
-                id_Usuario = '$this->id_Usuario',
                 dt_Reuniao = '$this->dt_Reuniao',
                 hora_Reuniao = '$this->hora_Reuniao',
                 local_Reuniao = '$this->local_Reuniao',
@@ -205,7 +197,6 @@
 			$sql = "
 				SELECT
 					 t1.id_Reuniao,
-					 t1.id_Usuario,
 					 t1.dt_Reuniao,
 					 t1.hora_Reuniao,
 					 t1.local_Reuniao,
@@ -213,7 +204,6 @@
 				FROM
 					reuniao AS t1
 				WHERE
-					t1.id_Usuario='$this->id_Usuario' AND
 					t1.dt_Reuniao='$this->dt_Reuniao' AND
 					t1.hora_Reuniao='$this->hora_Reuniao' AND
 					t1.local_Reuniao='$this->local_Reuniao' AND
@@ -243,7 +233,6 @@
 		
 		function __construct() { 
 			$this->id_Reuniao;
-			$this->id_Usuario;
 			$this->dt_Reuniao;
 			$this->hora_Reuniao;
             $this->local_Reuniao;
@@ -253,7 +242,6 @@
 		//destructor
 		function __destruct() {
 			$this->id_Reuniao;
-			$this->id_Usuario;
 			$this->dt_Reuniao;
 			$this->hora_Reuniao;
             $this->local_Reuniao;
