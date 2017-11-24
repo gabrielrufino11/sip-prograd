@@ -18,10 +18,9 @@
 			var id_TipoDocumento = $(this).attr('id');
 			if(confirm("Tem certeza que deseja excluir este dado?")){
 				$.ajax({
-					   url: 'core/controle/tipodocumento.php',
+					   url: 'engine/controllers/tipodocumento.php',
 					   data: {
 							id_TipoDocumento : id_TipoDocumento,
-							nome_TipoDocumento : null,
 							action: 'delete'
 					   },
 					   error: function(jqXHR, exception) {
@@ -91,7 +90,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -122,9 +121,8 @@
 <br>
 
 <?php
-	$DBAuxiliar = new DBAuxiliar();
-	$TipoDocumento = new TipoDocumento();
-	$TiposDocumentos = $DBAuxiliar->LerTodosTiposDocumentos();
+	$TiposDocumentos = new TipoDocumento();
+	$TiposDocumentos = $TiposDocumentos->ReadAll();
 
 	if(empty($TiposDocumentos)){
 		?>
@@ -152,15 +150,15 @@
 					?>    
                     <tr>
                         <td><?php echo $n ?></td>
-                        <td><?php echo $TipoDocumento->nome_TipoDocumento; ?></td>
+                        <td><?php echo $TipoDocumento['nome_TipoDocumento']; ?></td>
                         <td class="align-center " >
-                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $TipoDocumento->id_TipoDocumento; ?>">
+                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $TipoDocumento['id_TipoDocumento']; ?>">
                             	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     							Editar
     						</button>
                         </td>
                        <td class="align-center" >
-                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $TipoDocumento->id_TipoDocumento; ?>">
+                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $TipoDocumento['id_TipoDocumento']; ?>">
                             	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     							Deletar
     						</button>

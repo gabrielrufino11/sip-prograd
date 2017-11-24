@@ -14,12 +14,12 @@
 			var nome_TipoDocumento = $('#nome_TipoDocumento').val();
 						
 			//2 validar os inputs
-			if(id_TipoDocumento === "" || nome_TipoDocumento === ""){
+			if(nome_TipoDocumento === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			else{
 				$.ajax({
-					   url: 'core/controle/tipodocumento.php',
+					   url: 'engine/controllers/tipodocumento.php',
 					   data: {
 							id_TipoDocumento : id_TipoDocumento,
 							nome_TipoDocumento : nome_TipoDocumento,
@@ -73,10 +73,9 @@
 			//alert(id);
 			if (confirm("Tem certeza que deseja excluir?")){
 				$.ajax({
-					   url: 'core/controle/tipodocumento.php',
+					   url: 'engine/controllers/tipodocumento.php',
 					   data: {
 							id_TipoDocumento : id_TipoDocumento,
-							nome_TipoDocumento : null,
 							action: 'delete'
 					   },
 
@@ -106,7 +105,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -116,7 +115,7 @@
     <li class="active">Editar Dados</li>
 </ol>
 
-<h1>
+<h1 align="center">
 	Edição de Tipo de Documento
 </h1>
 
@@ -137,15 +136,14 @@
 <br>
 <br>
 <?php 
-	$DBAuxiliar = new DBAuxiliar();
 	$TipoDocumento = new TipoDocumento();
-	$TipoDocumento = $DBAuxiliar->LerTipoDocumento($_POST['id_TipoDocumento']);
+	$TipoDocumento = $TipoDocumento->Read($_POST['id_TipoDocumento']);
 ?>
 <section class="row formAdiconarDados">
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Nome *</span>
- 			<input id="nome_TipoDocumento" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $TipoDocumento->nome_TipoDocumento; ?>">
+ 			<input id="nome_TipoDocumento" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $TipoDocumento['nome_TipoDocumento']; ?>">
 		</div>    	
     </section>
 </section>

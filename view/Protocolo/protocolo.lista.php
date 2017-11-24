@@ -59,7 +59,7 @@
 			}
 			
         });
-		/* $('#tabelaProtocolo').DataTable({
+		$('#tabelaProtocolo').DataTable({
 			"language": {
 				"decimal":        "",
 				"emptyTable":     "Nenhum dado disponível para exibição",
@@ -85,7 +85,7 @@
 			}
 }	
 		
-		}); */
+		});
     });
 </script>
 

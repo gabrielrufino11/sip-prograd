@@ -22,7 +22,7 @@
 			}
 			else{
 				$.ajax({
-					   url: 'core/controle/tipodocumento.php',
+					   url: 'engine/controllers/tipodocumento.php',
 					   data: {
 							id_TipoDocumento : null,
 							nome_TipoDocumento : nome_TipoDocumento,
@@ -76,7 +76,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -86,11 +86,11 @@
     <li class="active">Adicionar Dados</li>
 </ol>
 
-<h1>
+<h1 align="center">
 	Cadastro Tipo de Documento
 </h1>
 
-<br>
+<br><br>
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
