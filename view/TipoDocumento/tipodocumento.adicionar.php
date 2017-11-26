@@ -105,7 +105,7 @@
 <br>
 
 <section class="row formAdiconarDados">
-	<section class="col-md-3">
+	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Nome *</span>
  			<input id="nome_TipoDocumento" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">

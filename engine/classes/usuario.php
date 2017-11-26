@@ -8,18 +8,16 @@
 		private $id_Usuario;
 		private $nome_Usuario;
 		private $senha_Usuario;
-		private $status_Usuario;
 		private $permissao_Usuario;
 		private $id_Reuniao;
 
 		//setters
 		
 		//Funcao que seta uma instancia da classe
-		public function SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $status_Usuario, $permissao_Usuario, $id_Reuniao) { 
+		public function SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $permissao_Usuario, $id_Reuniao) { 
 			$this->id_Usuario = $id_Usuario;
 			$this->nome_Usuario = $nome_Usuario;
 			$this->senha_Usuario = $senha_Usuario;
-			$this->status_Usuario = $status_Usuario;
 			$this->permissao_Usuario = $permissao_Usuario;
 			$this->id_Reuniao = $id_Reuniao;
 		}
@@ -46,7 +44,6 @@
                             id_Usuario,
                             nome_Usuario,
                             senha_Usuario,
-                            status_Usuario,
 							permissao_Usuario,
 							id_Reuniao
 						  )  
@@ -55,7 +52,6 @@
 				 			'$this->id_Usuario',
 				 			'$this->nome_Usuario',
 				 			'$this->senha_Usuario',
-							'$this->status_Usuario',
 							'$this->permissao_Usuario',
 							'$this->id_Reuniao'
 					);
@@ -75,7 +71,6 @@
 					 t1.id_Usuario,
 					 t1.nome_Usuario,
 					 t1.senha_Usuario,
-					 t1.status_Usuario,
 					 t1.permissao_Usuario,
 					 t1.id_Reuniao
 				FROM
@@ -101,7 +96,6 @@
 					 t1.id_Usuario,
 					 t1.nome_Usuario,
 					 t1.senha_Usuario,
-					 t1.status_Usuario,
 					 t1.permissao_Usuario,
 					 t1.id_Reuniao
 				FROM
@@ -138,7 +132,6 @@
 					 t1.id_Usuario,
 					 t1.nome_Usuario,
 					 t1.senha_Usuario,
-					 t1.status_Usuario,
 					 t1.permissao_Usuario,
 					 t1.id_Reuniao
 				FROM
@@ -164,7 +157,6 @@
 				
                 nome_Usuario = '$this->nome_Usuario',
                 senha_Usuario = '$this->senha_Usuario',
-                status_Usuario = '$this->status_Usuario',
 				permissao_Usuario = '$this->permissao_Usuario',
 				id_Reuniao = '$this->id_Reuniao'
 				
@@ -236,7 +228,6 @@
 			$this->id_Usuario;
 			$this->nome_Usuario;
 			$this->senha_Usuario;
-			$this->status_Usuario;
 			$this->permissao_Usuario;
 			$this->id_Reuniao;
 		}
@@ -246,7 +237,6 @@
 			$this->id_Usuario;
 			$this->nome_Usuario;
 			$this->senha_Usuario;
-			$this->status_Usuario;
 			$this->permissao_Usuario;
 			$this->id_Reuniao;
 		}

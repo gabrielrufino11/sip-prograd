@@ -28,7 +28,7 @@
 			
 			
 			//2 validar os inputs
-			if(id_Protocolo === "" || remetente_Protocolo === "" || id_TipoDocumento === "" || id_Usuario === "" || descricaoTeor_Protocolo === "" || dtEnvio_Protocolo === "" || dtRecebimento_Protocolo === ""){
+			if(remetente_Protocolo === "" || id_TipoDocumento === "" || id_Usuario === "" || descricaoTeor_Protocolo === "" || dtEnvio_Protocolo === "" || dtRecebimento_Protocolo === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			else{

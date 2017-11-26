@@ -101,12 +101,14 @@
 </ol>
 
 <br>
-<h1>
+<h1 align="center">
 	Lista de Tipos de Documentos Cadastrados
 </h1>
 
 <br>
 <br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Atualizar" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
@@ -173,3 +175,5 @@
 		<?php	
     }
 	?>
+
+	</div>

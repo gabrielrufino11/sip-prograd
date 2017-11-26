@@ -13,21 +13,19 @@
 			var id_Usuario = $('#id_Usuario').val();
 			var nome_Usuario = $('#nome_Usuario').val();
 			var senha_Usuario = $('#senha_Usuario').val();
-			var status_Usuario = $('#status_Usuario').val();
 			var permissao_Usuario = $('#permissao_Usuario').val();
 			
 			//2 validar os inputs
-			if(id_Usuario === "" || nome_Usuario === "" || senha_Usuario === "" || status_Usuario === "" || permissao_Usuario === ""){
+			if(nome_Usuario === "" || senha_Usuario === "" || permissao_Usuario === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			else{
 				$.ajax({
-					   url: 'core/controle/usuario.php',
+					   url: 'engine/controllers/usuario.php',
 					   data: {
 							id_Usuario : id_Usuario,
 							nome_Usuario : nome_Usuario,
 							senha_Usuario : senha_Usuario,
-							status_Usuario : status_Usuario,
 							permissao_Usuario : permissao_Usuario,
 							action: 'update'
 					   },
@@ -54,7 +52,7 @@
 					   success: function(data) {
 							//console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item editado com sucesso!');
+								alert('Usuario editado com sucesso!');
     							$('#loader').load('view/Usuario/usuario.lista.php');	
 							}
 							else{
@@ -79,7 +77,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -89,7 +87,7 @@
     <li class="active">Editar Dados</li>
 </ol>
 
-<h1>
+<h1 align="center">
 	Edição de Usuário
 </h1>
 
@@ -110,28 +108,39 @@
 <br>
 <br>
 <?php 
-	$DBAuxiliar = new DBAuxiliar();
 	$Usuario = new Usuario();
-	$Usuario = $DBAuxiliar->LerUsuario($_POST['id_Usuario']);
+	$Usuario = $Usuario->Read($_POST['id_Usuario']);
 ?>
 <section class="row formAdiconarDados">
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Nome/Login *</span>
- 			<input id="nome_Usuario" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $Usuario->nome_Usuario; ?>">
+ 			<input id="nome_Usuario" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $Usuario['nome_Usuario']; ?>">
 		</div>    	
     </section>
     
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Número do Ofício *</span>
- 			<input id="senha_Usuario" type="password" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $Usuario->senha_Usuario; ?>">
+ 			<input id="senha_Usuario" type="password" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $Usuario['senha_Usuario']; ?>">
 		</div>
     </section>
 	
 </section>
 
-<input type="hidden" id="id_Usuario" value="<?php echo $Usuario->id_Usuario; ?>">
+<section class="row formAdiconarDados">
+    <section class="col-md-6">
+    	<div class="input-group">
+  			<span class="input-group-addon" id="basic-addon1">Permissão de Acesso *</span>
+				<select id="permissao_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
+            	<option value="0">Escolha o tipo de permissão</option>
+                <option value=""><?php echo $Usuario['permissao_Usuario']; ?></option>    
+            	</select>
+          </div>    	
+    </section>
+</section>
+
+<input type="hidden" id="id_Usuario" value="<?php echo $Usuario['id_Usuario']; ?>">
 
 <br>
 

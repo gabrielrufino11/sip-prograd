@@ -7,7 +7,6 @@
 	$id_Usuario = $_POST['id_Usuario'];
 	$nome_Usuario = $_POST['nome_Usuario'];
 	$senha_Usuario = $_POST['senha_Usuario'];
-	$status_Usuario = $_POST['status_Usuario'];
 	$permissao_Usuario = $_POST['permissao_Usuario'];
 	$id_Reuniao = $_POST['id_Reuniao'];
 	
@@ -17,7 +16,7 @@
 	
 	//parte3
 	$Item = new Usuario();
-	$Item->SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $status_Usuario, $permissao_Usuario, $id_Reuniao);
+	$Item->SetValues($id_Usuario, $nome_Usuario, $senha_Usuario, $permissao_Usuario, $id_Reuniao);
 	
 	
 		

@@ -48,7 +48,7 @@
 					   success: function(data) {
 							//console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item editado com sucesso!');
+								alert('Tipo de Documento editado com sucesso!');
     							$('#loader').load('view/TipoDocumento/tipodocumento.lista.php');	
 							}
 							else{
@@ -148,4 +148,8 @@
     </section>
 </section>
 
-<input type="hidden" id="id_TipoDocumento" value="<?php echo $TipoDocumento->id_TipoDocumento; ?>">
+<br>
+
+<li>*: campo de preenchimento obrigatório.</li> 
+
+<input type="hidden" id="id_TipoDocumento" value="<?php echo $TipoDocumento['id_TipoDocumento']; ?>">

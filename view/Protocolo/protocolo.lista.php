@@ -108,6 +108,8 @@
 <br>
 <br>
 
+<div class="container">
+
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Atualizar" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
     	Atualizar
@@ -186,3 +188,5 @@
 		<?php	
     }
 	?>
+
+	</div>

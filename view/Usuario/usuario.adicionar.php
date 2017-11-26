@@ -29,7 +29,7 @@
 			}
 			else{
 				$.ajax({
-					   url: 'core/controle/usuario.php',
+					   url: 'engine/controllers/usuario.php',
 					   data: {
 							id_Usuario : null,
 							nome_Usuario : nome_Usuario,
@@ -61,7 +61,7 @@
 					   success: function(data) {
 							//console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item adicionado com sucesso!');
+								alert('Usuario adicionado com sucesso!');
     							$('#loader').load('view/Usuario/usuario.lista.php');	
 							}
 							else{
@@ -86,11 +86,11 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 
-<h1>
+<h1 align="center">
 	Cadastro de Usuário
 </h1>
 
@@ -123,17 +123,7 @@
     </section>
 </section>
 <br>
-<section>
-	<section class="col-md-6">
-    	<div class="input-group">
-  			<span class="input-group-addon" id="basic-addon1">Status *</span>
-				<select id="status_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
-            	<option value="0">Escolha o status</option>
-                <option value="1">Ativo</option>
-                <option value="2">Inativo</option>     
-            	</select>
-          </div>    	
-    </section>
+<section class="row formAdiconarDados">
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Permissão de Acesso *</span>

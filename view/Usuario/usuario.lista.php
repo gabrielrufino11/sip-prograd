@@ -18,13 +18,9 @@
 			var id_Usuario = $(this).attr('id');
 			if(confirm("Tem certeza que deseja excluir este dado?")){
 				$.ajax({
-					   url: 'core/controle/usuario.php',
+					   url: 'engine/controllers/usuario.php',
 					   data: {
 							id_Usuario : id_Usuario,
-							nome_Usuario : null,
-							senha_Usuario : null,
-							status_Usuario : null,
-							permissao_Usuario : null,
 							action: 'delete'
 					   },
 					   error: function(jqXHR, exception) {
@@ -50,7 +46,7 @@
 					   success: function(data) {
 							//console.log(data);							
 							if($.trim(data) === "true"){
-								alert('Item deletado com sucesso!');
+								alert('Usuario deletado com sucesso!');
     							$('#loader').load('view/Usuario/usuario.lista.php');	
 							}
 							else{
@@ -94,7 +90,7 @@
 </script>
 
 <?php
-	require_once "../../core/config.php";
+	require_once "../../engine/config.php";
 ?>
 <br>
 <ol class="breadcrumb">
@@ -105,12 +101,14 @@
 </ol>
 
 <br>
-<h1>
+<h1 align="center">
 	Lista de Usuarios Cadastrados
 </h1>
 
 <br>
 <br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Atualizar" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
@@ -125,9 +123,8 @@
 <br>
 
 <?php
-	$DBAuxiliar = new DBAuxiliar();
-	$Usuario = new Usuario();
-	$Usuarios = $DBAuxiliar->LerTodosUsuarios();
+	$Usuarios = new Usuario();
+	$Usuarios = $Usuarios->ReadAll();
 	
 	//var_dump($Usuario);
 
@@ -145,7 +142,6 @@
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Status</th>
                         <th>Permissão de Acesso</th>
                         <th>Editar</th>
                         <th>Excluir</th>
@@ -161,16 +157,15 @@
                     <tr>
                         <td><?php echo $n ?></td>
                         <td><?php echo $Usuario->nome_Usuario; ?></td>
-                        <td><?php echo $Usuario->status_Usuario; ?></td>
                         <td><?php echo $Usuario->permissao_Usuario; ?></td>
                         <td class="align-center " >
-                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Usuario->id_Usuario; ?>">
+                        	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Usuario['id_Usuario']; ?>">
                             	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     							Editar
     						</button>
                         </td>
                        <td class="align-center" >
-                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $Usuario->id_Usuario; ?>">
+                        	<button type="button" class="btn btn-danger btnExcluir ExcluirItem" id="<?php echo $Usuario['id_Usuario']; ?>">
                             	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     							Deletar
     						</button>
@@ -185,3 +180,5 @@
 		<?php	
     }
 	?>
+
+	</div>

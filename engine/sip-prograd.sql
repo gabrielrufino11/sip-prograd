@@ -64,7 +64,6 @@ CREATE TABLE `usuario` (
   `id_Usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome_Usuario` varchar(100) NOT NULL,
   `senha_Usuario` varchar(40) NOT NULL,
-  `status_Usuario` int(1) NOT NULL,
   `permissao_Usuario` int(1) NOT NULL,
   `id_Reuniao` int(11) NOT NULL,
   PRIMARY KEY (`id_Usuario`)
@@ -74,14 +73,14 @@ CREATE TABLE `usuario` (
 --  Records of `usuario`
 -- ----------------------------
 BEGIN;
-INSERT INTO `usuario` VALUES ('1', 'DAP', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('2', 'DAA', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('3', 'DMAA', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('4', 'DDLA', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('5', 'DERD', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('6', 'Pró-Reitor', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('7', 'Secretaria', '1234', '1', '1', '');
-INSERT INTO `usuario` VALUES ('8', 'COPESE', '1234', '1', '1', '');
+INSERT INTO `usuario` VALUES ('1', 'DAP', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('2', 'DAA', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('3', 'DMAA', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('4', 'DDLA', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('5', 'DERD', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('6', 'Pró-Reitor', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('7', 'Secretaria', '1234', '1', '');
+INSERT INTO `usuario` VALUES ('8', 'COPESE', '1234', '1', '');
 COMMIT;
 
 -- ----------------------------
