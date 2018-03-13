@@ -9,6 +9,7 @@
 	require_once "classes/tipodocumento.php";
 	require_once "classes/usuario.php";
 	require_once "classes/reuniao.php";
+	require_once "classes/arquivo.php";
 		
 	
 	function ExibeData($data){

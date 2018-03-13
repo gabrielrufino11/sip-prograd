@@ -11,19 +11,21 @@
 		private $id_Usuario;
 		private $descricaoTeor_Protocolo;
         private $dtEnvio_Protocolo;
-        private $dtRecebimento_Protocolo;
+		private $dtRecebimento_Protocolo;
+		private $arquivo_Protocolo;
 
 		//setters
 		
 		//Funcao que seta uma instancia da classe
-		public function SetValues($id_Protocolo, $remetente_Protocolo, $id_TipoDocumento, $id_Usuario, $descricaoTeor_Protocolo, $dtEnvio_Protocolo, $dtRecebimento_Protocolo) { 
+		public function SetValues($id_Protocolo, $remetente_Protocolo, $id_TipoDocumento, $id_Usuario, $descricaoTeor_Protocolo, $dtEnvio_Protocolo, $dtRecebimento_Protocolo, $arquivo_Protocolo) { 
 			$this->id_Protocolo = $id_Protocolo;
 			$this->remetente_Protocolo = $remetente_Protocolo;
 			$this->id_TipoDocumento = $id_TipoDocumento;
 			$this->id_Usuario = $id_Usuario;
 			$this->descricaoTeor_Protocolo = $descricaoTeor_Protocolo;
             $this->dtEnvio_Protocolo = $dtEnvio_Protocolo;
-            $this->dtRecebimento_Protocolo = $dtRecebimento_Protocolo;
+			$this->dtRecebimento_Protocolo = $dtRecebimento_Protocolo;
+			$this->arquivo_Protocolo = $arquivo_Protocolo;
 		}
 		
 		public function __get($property) {
@@ -51,7 +53,8 @@
 							id_Usuario,
 							descricaoTeor_Protocolo,
                             dtEnvio_Protocolo,
-                            dtRecebimento_Protocolo
+							dtRecebimento_Protocolo,
+							arquivo_Protocolo
 						  )  
 				VALUES 
 					(
@@ -61,7 +64,8 @@
 							'$this->id_Usuario',
 							'$this->descricaoTeor_Protocolo',
                             '$this->dtEnvio_Protocolo',
-                            '$this->dtRecebimento_Protocolo'
+							'$this->dtRecebimento_Protocolo',
+							'$this->arquivo_Protocolo'
 					);
 			";
 			
@@ -82,7 +86,8 @@
 					 t1.id_Usuario,
 					 t1.descricaoTeor_Protocolo,
                      t1.dtEnvio_Protocolo,
-                     t1.dtRecebimento_Protocolo
+					 t1.dtRecebimento_Protocolo,
+					 t1.arquivo_Protocolo
 				FROM
 					protocolo AS t1
 				WHERE
@@ -109,7 +114,8 @@
 					 t1.id_Usuario,
 					 t1.descricaoTeor_Protocolo,
                      t1.dtEnvio_Protocolo,
-                     t1.dtRecebimento_Protocolo
+					 t1.dtRecebimento_Protocolo,
+					 t1.arquivo_Protocolo
 				FROM
 					protocolo AS t1
 				
@@ -147,7 +153,8 @@
 					 t1.id_Usuario,
 					 t1.descricaoTeor_Protocolo,
                      t1.dtEnvio_Protocolo,
-                     t1.dtRecebimento_Protocolo
+					 t1.dtRecebimento_Protocolo,
+					 t1.arquivo_Protocolo
 				FROM
 					protocolo AS t1
 					
@@ -174,7 +181,8 @@
                 id_Usuario = '$this->id_Usuario',
                 descricaoTeor_Protocolo = '$this->descricaoTeor_Protocolo',
                 dtEnvio_Protocolo = '$this->dtEnvio_Protocolo',
-                dtRecebimento_Protocolo = '$this->dtRecebimento_Protocolo'
+				dtRecebimento_Protocolo = '$this->dtRecebimento_Protocolo',
+				arquivo_Protocolo = '$this->arquivo_Protocolo'
 				
 				WHERE id_Protocolo = '$id';
 				
@@ -227,7 +235,8 @@
 			$this->id_Usuario;
 			$this->descricaoTeor_Protocolo;
             $this->dtEnvio_Protocolo;
-            $this->dtRecebimento_Protocolo;
+			$this->dtRecebimento_Protocolo;
+			$this->arquivo_Protocolo;
 		}
 		
 		//destructor
@@ -238,7 +247,8 @@
 			$this->id_Usuario;
 			$this->descricaoTeor_Protocolo;
             $this->dtEnvio_Protocolo;
-            $this->dtRecebimento_Protocolo;
+			$this->dtRecebimento_Protocolo;
+			$this->arquivo_Protocolo;
 		}
 			
 	};
