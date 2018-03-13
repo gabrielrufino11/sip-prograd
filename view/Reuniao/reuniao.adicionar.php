@@ -152,11 +152,13 @@
     <li class="active">Adicionar Dados</li>
 </ol>
 
-<h1>
+<h1 align="center">
 	Cadastro de Reunião
 </h1>
 
 <br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -174,7 +176,7 @@
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Participantes *</span>
-				<select id="id_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
+				<select name="select[]" id="id_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
             	<option value="0" disabled>Escolha o(s) participante(s)</option>
                 <?php
 					$Usuarios = new Usuario();
@@ -234,3 +236,5 @@
 <br>
 
 <li>*: campo de preenchimento obrigatório.</li>
+
+</div>

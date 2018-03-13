@@ -160,6 +160,8 @@
 
 <br>
 
+<div class="container">
+
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     	Minhas Reuniões
@@ -182,7 +184,7 @@
 	<section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Participantes *</span>
- 			<select id="id_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
+ 			<select id="id_Usuario" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
             	<option value="0">Escolha o participante</option>
                 <?php
 					$Usuario = new Usuario();
@@ -190,7 +192,7 @@
 					if(!empty($Usuarios)) {
 					foreach($Usuarios as $Usuario){
 						?>
-                        	<option value="<?php echo $Usuario['id_Usuario']; ?>" <?php if($Usuario['id_Reuniao'] === $Reuniao['id_Reuniao']){echo " selected";} ?>><?php echo $Usuario['nome_Usuario']; ?></option>
+                        	<option value="<?php echo $Usuario['id_Usuario']; ?>" <?php if($Usuario['id_Reuniao'] === $Reuniao['id_Reuniao']){echo 'selected';} ?>><?php echo $Usuario['nome_Usuario']; ?></option>
                         <?php
 					} }
 				?>         
@@ -246,4 +248,6 @@
 
 <br>
 
-<li>*: campo de preenchimento obrigatório.</li> 
+<li>*: campo de preenchimento obrigatório.</li>
+
+</div> 

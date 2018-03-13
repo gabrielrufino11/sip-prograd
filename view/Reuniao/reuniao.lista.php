@@ -146,8 +146,6 @@
                         <th>Hora</th>
                         <th>Local</th>
                         <th>Pauta</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
