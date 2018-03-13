@@ -144,8 +144,7 @@
                         <th>Remetente</th>
                         <th>Destinatário</th>
                         <th>Descrição do Teor</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+						<th>Data de Envio</th>
                     </tr>
                 </thead>
                 <tbody>

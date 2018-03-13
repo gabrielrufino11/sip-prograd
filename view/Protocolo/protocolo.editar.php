@@ -139,6 +139,8 @@
 
 <br>
 
+<div class="container">
+
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     	Meus Protocolos
@@ -245,4 +247,6 @@
 
 <br>
 
-<li>*: campo de preenchimento obrigatório.</li> 
+<li>*: campo de preenchimento obrigatório.</li>
+
+</div>

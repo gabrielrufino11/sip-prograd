@@ -25,7 +25,7 @@
 			console.log('tipo'+dtEnvio_Protocolo);
 			console.log('tipo'+dtRecebimento_Protocolo);
 			//2 validar os inputs
-			if(remetente_Protocolo === "" || id_TipoDocumento === ""  || id_Usuario === "" || descricaoTeor_Protocolo === "" || dtEnvio_Protocolo === "" || dtRecebimento_Protocolo === ""){
+			if(remetente_Protocolo === "" || id_TipoDocumento === ""  || id_Usuario === "" || descricaoTeor_Protocolo === "" || dtEnvio_Protocolo === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			
@@ -103,6 +103,8 @@
 </h1>
 
 <br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -182,7 +184,7 @@
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Data de Recebimento</span>
- 			<input id="dtRecebimento_Protocolo" type="date" class="form-control" placeholder="" aria-describedby="basic-addon1">
+ 			<input id="dtRecebimento_Protocolo" type="date" class="form-control" placeholder="" aria-describedby="basic-addon1" disabled>
 		</div>
     </section>
 </section>
@@ -191,13 +193,39 @@
 <br>
 
 <section>
-	<form method="post" action="view/Protocolo/recebe_upload.php" enctype="multipart/form-data">
+	<?php
+		require_once "../../engine/bd/bd.php";
+
+		$msg = false;
+		if (isset($_FILES['arquivo'])){
+			
+			$extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+			$novo_nome = md5(time()) . $extensao;
+			$diretorio = "upload/";
+
+			move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
+
+			$sql_code = "INSERT INTO arquivo (codigo, arquivo, data) VALUES(null, '$novo_nome', NOW()";
+			if($dbi->query($sql_code))
+				$msg = "Arquivo enviado com sucesso!";
+			else
+				$msg = "Falha ao enviar arquivo.";
+
+
+		}
+
+	?>				
+
+	<?php if($msg != false) echo "<p> $msg </p>";?>
+	<form method="POST" action="view/Protocolo/protocolo.adicionar.php" enctype="multipart/form-data">
   		<label>Arquivo</label>
   		<input type="file" name="arquivo" />
-  		<input type="submit" value="Enviar" />
+		  <br>
 	</form>
 </section>
 
 <br>
 
 <li>*: campo de preenchimento obrigatório. O campo Data de Recebimento deve ser preenchido somente pelo destinatário no momento do recebimento. Para este preenchimento, o usuário deve ir para a página de gerenciamento de protocolos e clicar em editar.</li> 
+
+</div>
