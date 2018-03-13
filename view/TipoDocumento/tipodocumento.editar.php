@@ -119,7 +119,9 @@
 	Edição de Tipo de Documento
 </h1>
 
-<br>
+<br><br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -153,3 +155,5 @@
 <li>*: campo de preenchimento obrigatório.</li> 
 
 <input type="hidden" id="id_TipoDocumento" value="<?php echo $TipoDocumento['id_TipoDocumento']; ?>">
+
+</div>

@@ -59,7 +59,7 @@
 			}
 			
         });
-		$('#tabelaTipoDocumento').DataTable({
+		/* $('#tabelaTipoDocumento').DataTable({
 			"language": {
 				"decimal":        "",
 				"emptyTable":     "Nenhum dado disponível para exibição",
@@ -85,7 +85,7 @@
 			}
 }	
 		
-		});
+		}); */
     });
 </script>
 
@@ -140,8 +140,6 @@
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>

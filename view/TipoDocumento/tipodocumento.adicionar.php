@@ -92,6 +92,8 @@
 
 <br><br>
 
+<div class="container">
+
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     	Voltar
@@ -111,8 +113,33 @@
  			<input id="nome_TipoDocumento" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
 		</div>    	
     </section>
+
+<?php if(isset($_POST['enviar']))
+{
+	$opcao = $_POST['select'];
+	echo $opcao;
+	$contar = count($opcao);
+		for ($i=0;$i<$contar;$i++){
+			echo $opcao[$i];
+		}
+}
+
+?>
+
+<!-- <form name="teste" action="" method="post">
+	<select name="select[]" multiple="multiple">
+		<option value="1">Opção 1</option>
+		<option value="2">Opção 2</option>
+		<option value="3">Opção 3</option>
+	</select>
+
+	<input type="submit" name="enviar" value="enviar"/>
+</form> -->
+
 </section>
 
 <br>
 
-<li>*: campo de preenchimento obrigatório.</li> 
+<li>*: campo de preenchimento obrigatório.</li>
+
+</div>
