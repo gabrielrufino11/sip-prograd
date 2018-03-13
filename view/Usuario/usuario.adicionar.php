@@ -14,17 +14,15 @@
 			var id_Usuario =$('#id_Usuario').val();
 			var nome_Usuario =$('#nome_Usuario').val();
 			var senha_Usuario = $('#senha_Usuario').val();
-			var status_Usuario = $('#status_Usuario').val();
 			var permissao_Usuario = $('#permissao_Usuario').val();
 			
 			console.log('tipo'+id_Usuario);
 			console.log('tipo'+nome_Usuario);
 			console.log('tipo'+senha_Usuario);
-			console.log('tipo'+status_Usuario);
 			console.log('tipo'+permissao_Usuario);
 			
 			//2 validar os inputs
-			if(nome_Usuario === "" || senha_Usuario === "" || status_Usuario === "" || permissao_Usuario === ""){
+			if(nome_Usuario === "" || senha_Usuario === "" || permissao_Usuario === ""){
 				return alert('Todos os campos com asterisco (*) devem ser preenchidos!!');
 			}
 			else{
@@ -34,7 +32,6 @@
 							id_Usuario : null,
 							nome_Usuario : nome_Usuario,
 							senha_Usuario : senha_Usuario,
-							status_Usuario : status_Usuario,
 							permissao_Usuario : permissao_Usuario,
 							action: 'create'
 					   },
@@ -89,12 +86,20 @@
 	require_once "../../engine/config.php";
 ?>
 <br>
+<ol class="breadcrumb">
+	<li><a href="index.php">Home</a></li>
+    <li class="active">Cadastro</a></li>
+    <li class="active">Usuário</a></li>
+    <li class="active">Adicionar Dados</li>
+</ol>
 
 <h1 align="center">
 	Cadastro de Usuário
 </h1>
 
-<br>
+<br><br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -127,7 +132,7 @@
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Permissão de Acesso *</span>
-				<select id="permissao_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
+				<select id="permissao_Usuario" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
             	<option value="0">Escolha o tipo de permissão</option>
                 <option value="1">Administrador</option>
                 <option value="2">Normal</option>       
@@ -139,3 +144,5 @@
 <br>
 
 <li>*: campo de preenchimento obrigatório.</li>
+
+</div>

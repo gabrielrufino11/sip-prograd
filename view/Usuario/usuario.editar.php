@@ -91,7 +91,9 @@
 	Edição de Usuário
 </h1>
 
-<br>
+<br><br>
+
+<div class="container">
 
 <div class="btn-group" role="group"  aria-label="...">
 	<button id="Voltar" type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -121,20 +123,32 @@
     
 	<section class="col-md-6">
     	<div class="input-group">
-  			<span class="input-group-addon" id="basic-addon1">Número do Ofício *</span>
+  			<span class="input-group-addon" id="basic-addon1">Senha *</span>
  			<input id="senha_Usuario" type="password" class="form-control" placeholder="" aria-describedby="basic-addon1" value="<?php echo $Usuario['senha_Usuario']; ?>">
 		</div>
     </section>
 	
 </section>
 
+<br>
+
 <section class="row formAdiconarDados">
     <section class="col-md-6">
     	<div class="input-group">
   			<span class="input-group-addon" id="basic-addon1">Permissão de Acesso *</span>
-				<select id="permissao_Usuario" type="text" multiple class="chosen-select" placeholder="" aria-describedby="basic-addon1">
+				<select id="permissao_Usuario" type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
             	<option value="0">Escolha o tipo de permissão</option>
-                <option value=""><?php echo $Usuario['permissao_Usuario']; ?></option>    
+				<option value="<?php 
+				if ($Usuario['permissao_Usuario'] === 1)
+				{echo "Administrador";}
+				else
+				{echo "Normal";}
+				?>">
+				<?php 
+				if ($Usuario['permissao_Usuario'] === 1)
+				{echo 'selected';}
+				else
+				{echo 'selected';}?></option>
             	</select>
           </div>    	
     </section>
@@ -144,4 +158,6 @@
 
 <br>
 
-<li>*: campo de preenchimento obrigatório.</li> 
+<li>*: campo de preenchimento obrigatório.</li>
+
+</div>

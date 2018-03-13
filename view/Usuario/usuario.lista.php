@@ -59,7 +59,7 @@
 			}
 			
         });
-		$('#tabelaUsuario').DataTable({
+		/* $('#tabelaUsuario').DataTable({
 			"language": {
 				"decimal":        "",
 				"emptyTable":     "Nenhum dado disponível para exibição",
@@ -85,7 +85,7 @@
 			}
 }	
 		
-		});
+		}); */
     });
 </script>
 
@@ -105,8 +105,7 @@
 	Lista de Usuarios Cadastrados
 </h1>
 
-<br>
-<br>
+<br><br>
 
 <div class="container">
 
@@ -143,8 +142,8 @@
                         <th>#</th>
                         <th>Nome</th>
                         <th>Permissão de Acesso</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -156,8 +155,13 @@
 					?>    
                     <tr>
                         <td><?php echo $n ?></td>
-                        <td><?php echo $Usuario->nome_Usuario; ?></td>
-                        <td><?php echo $Usuario->permissao_Usuario; ?></td>
+                        <td><?php echo $Usuario['nome_Usuario']; ?></td>
+						<td><?php 
+							if ($Usuario['permissao_Usuario'] === 1) 
+							{echo "Administrador";}
+							else 
+							{echo "Normal";}
+						?></td>
                         <td class="align-center " >
                         	<button type="button" class="btn btn-warning EditarItem" id="<?php echo $Usuario['id_Usuario']; ?>">
                             	<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
